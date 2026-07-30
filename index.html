@@ -419,24 +419,43 @@
       </div>
     </section>
 
-    <!-- Section 6: Marcas Parceiras (Infinite Marquee) -->
-    <section id="marcas" class="bg-terra fade-in-section" style="padding: 3rem 0;">
-      <div class="container" style="margin-bottom: 2rem;">
+    <!-- Section 6: Marcas & Parceiros (CSS Grid com Efeito Hover de Imagem) -->
+    <section id="marcas" class="bg-terra fade-in-section">
+      <div class="container">
         <h2 class="section-title">Marcas & Parceiros</h2>
-        <p class="section-subtitle">Quem já esteve ao lado do Noobzim</p>
-      </div>
+        <p class="section-subtitle">Campanhas e marcas que já estiveram ao lado do Noobzim</p>
 
-      <div class="marquee-container" aria-label="Marcas parceiras">
-        <div class="marquee-track">
-          <div class="marquee-item">FURIA ESPORTS</div>
-          <div class="marquee-item">XBOX</div>
-          <div class="marquee-item">MAD FAVELA</div>
-          <div class="marquee-item">DIVERSI</div>
-          <!-- Duplicated for seamless loop -->
-          <div class="marquee-item">FURIA ESPORTS</div>
-          <div class="marquee-item">XBOX</div>
-          <div class="marquee-item">MAD FAVELA</div>
-          <div class="marquee-item">DIVERSI</div>
+        <div class="partners-grid">
+          <!-- Parceiro 1: FURIA Esports -->
+          <article class="partner-hover-card">
+            <!-- Camada 2: Fotografia de fundo -->
+            <img src="assets/004.png" alt="Ação social com a FURIA" class="partner-campaign-img">
+            <!-- Camada 1: Logotipo centralizado -->
+            <div class="partner-brand-logo">FURIA ESPORTS</div>
+            <!-- Canto inferior direito: Tag -->
+            <div class="partner-tag">FURIA - 2026</div>
+          </article>
+
+          <!-- Parceiro 2: Xbox -->
+          <article class="partner-hover-card">
+            <img src="assets/008.png" alt="Evento gamer Xbox" class="partner-campaign-img">
+            <div class="partner-brand-logo">XBOX</div>
+            <div class="partner-tag">XBOX - 2025</div>
+          </article>
+
+          <!-- Parceiro 3: Mad Favela -->
+          <article class="partner-hover-card">
+            <img src="assets/005.png" alt="Campanha Mad Favela" class="partner-campaign-img">
+            <div class="partner-brand-logo">MAD FAVELA</div>
+            <div class="partner-tag">MAD FAVELA - 2024</div>
+          </article>
+
+          <!-- Parceiro 4: Diversi -->
+          <article class="partner-hover-card">
+            <img src="assets/006.png" alt="Projeto Diversi" class="partner-campaign-img">
+            <div class="partner-brand-logo">DIVERSI</div>
+            <div class="partner-tag">DIVERSI - 2024</div>
+          </article>
         </div>
       </div>
     </section>
