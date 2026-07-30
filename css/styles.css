@@ -5,13 +5,18 @@
 /* --- Design Tokens --- */
 :root {
   /* Colors */
-  --bg-primary: #9c634c;          /* Terra / Rust Background */
-  --text-primary: #f4e3c5;        /* Bege Claro */
-  --accent-yellow: #f1aa00;       /* Amarelo Vibrante (CTA / Metric highlight) */
+  --bg-primary: #9c634c;
+  /* Terra / Rust Background */
+  --text-primary: #f4e3c5;
+  /* Bege Claro */
+  --accent-yellow: #f1aa00;
+  /* Amarelo Vibrante (CTA / Metric highlight) */
   --accent-yellow-hover: #d99900;
-  --accent-teal: #225a5e;         /* Azul Esverdeado (Bordas / Cards) */
+  --accent-teal: #225a5e;
+  /* Azul Esverdeado (Bordas / Cards) */
   --accent-teal-light: #2d747a;
-  --dark-bg: #111111;             /* Preto Urbano */
+  --dark-bg: #111111;
+  /* Preto Urbano */
   --card-bg: #181818;
   --card-border: rgba(241, 170, 0, 0.25);
 
@@ -23,14 +28,16 @@
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
-  --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(241, 170, 0, 0.4);
+  --shadow-hover: 0 12px 28px rgba(0, 0, 0, 0.6), 0 0 15px rgba(241, 170, 0, 0.3);
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 20px;
 }
 
 /* --- Reset & Global Styles --- */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -52,7 +59,10 @@ body {
 }
 
 /* Typography Base */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--font-title);
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -121,9 +131,11 @@ a {
   0% {
     box-shadow: 0 0 0 0 rgba(241, 170, 0, 0.8);
   }
+
   70% {
     box-shadow: 0 0 0 18px rgba(241, 170, 0, 0);
   }
+
   100% {
     box-shadow: 0 0 0 0 rgba(241, 170, 0, 0);
   }
@@ -179,7 +191,7 @@ a {
   position: relative;
   padding: 5rem 0 6rem;
   background: linear-gradient(rgba(17, 17, 17, 0.45), rgba(17, 17, 17, 0.65)),
-              url('../assets/images/hero-bg.jpg') no-repeat center center / cover;
+    url('../assets/images/hero-bg.jpg') no-repeat center center / cover;
   overflow: hidden;
   min-height: 85vh;
   display: flex;
@@ -191,7 +203,7 @@ a {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2.5rem;
-  align-items: flex-end;
+  align-items: flex-start;
   position: relative;
   z-index: 2;
 }
@@ -202,7 +214,7 @@ a {
   color: var(--accent-yellow);
   font-family: var(--font-title);
   font-size: 1.35rem;
-  letter-spacing: 2px;
+  letter-spacing: 0px;
   padding: 0.6rem 1.4rem;
   border-radius: var(--radius-sm);
   border: 2px solid var(--accent-yellow);
@@ -254,32 +266,67 @@ a {
   transform-origin: bottom center;
   opacity: 0;
   animation: heroImgEntrance 1.2s cubic-bezier(0.17, 0.67, 0.29, 0.99) 0.3s forwards,
-             heroFloat 4s ease-in-out infinite 1.5s;
+    heroFloat 4s ease-in-out infinite 1.5s;
 }
 
 @keyframes heroFadeDown {
-  0% { opacity: 0; transform: translateY(-30px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes heroFadeLeft {
-  0% { opacity: 0; transform: translateX(-40px); }
-  100% { opacity: 1; transform: translateX(0); }
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes heroFadeUp {
-  0% { opacity: 0; transform: translateY(30px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes heroImgEntrance {
-  0% { opacity: 0; transform: translateY(60px) scale(0.92); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.92);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 @keyframes heroFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 /* --- Section Global Styling --- */
@@ -299,64 +346,158 @@ section {
 .metrics-main-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.5rem;
+  gap: 3rem;
   margin-bottom: 4rem;
 }
 
+/* Featured Platforms Grid Refactor */
 .metric-card-featured {
   background: linear-gradient(145deg, #1f1f1f 0%, #141414 100%);
   border: 2px solid var(--accent-yellow);
   border-radius: var(--radius-lg);
-  padding: 2.5rem 2rem;
-  position: relative;
-  overflow: hidden;
+  padding: 2rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   transition: var(--transition-normal);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
 }
 
 .metric-card-featured:hover {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
   box-shadow: var(--shadow-hover);
 }
 
-.metric-card-header {
+/* Video Preview inside metrics card */
+.metric-card-video-preview {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 2px solid var(--accent-teal);
+  height: 320px;
+  cursor: pointer;
+  display: block;
+}
+
+.metric-card-video-preview:hover {
+  border-color: var(--accent-yellow);
+}
+
+.metric-video-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.metric-card-video-preview:hover .metric-video-img {
+  transform: scale(1.05);
+}
+
+.metric-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(17, 17, 17, 0.1) 0%, rgba(17, 17, 17, 0.85) 100%);
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: space-between;
-  border-bottom: 2px solid rgba(241, 170, 0, 0.2);
-  padding-bottom: 1.25rem;
-  margin-bottom: 1.75rem;
+  padding: 1.25rem;
 }
 
-.platform-title {
+.platform-badge-pill {
+  align-self: flex-start;
+  background-color: var(--accent-yellow);
+  color: var(--dark-bg);
+  font-family: var(--font-title);
+  font-size: 0.8rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-sm);
+  letter-spacing: 1px;
+}
+
+.play-button-small {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  background: rgba(17, 17, 17, 0.85);
+  border: 2px solid var(--accent-yellow);
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  font-family: var(--font-title);
-  font-size: 1.75rem;
+  justify-content: center;
   color: var(--accent-yellow);
+  font-size: 1.3rem;
+  backdrop-filter: blur(4px);
+  transition: var(--transition-fast);
 }
 
-.platform-icon {
-  font-size: 2rem;
+.metric-card-video-preview:hover .play-button-small {
+  background: var(--accent-yellow);
+  color: var(--dark-bg);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.metric-video-info-text {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+
+.metric-video-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  opacity: 0.85;
+  margin-top: 0.25rem;
+}
+
+/* Metric lists inside platform card */
+.metric-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.platform-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-title);
+  font-size: 1.6rem;
+  color: var(--accent-yellow);
+  margin-bottom: 1.25rem;
+  border-bottom: 2px solid rgba(241, 170, 0, 0.2);
+  padding-bottom: 0.5rem;
 }
 
 .metric-stats-list {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .stat-item {
-  background-color: rgba(34, 90, 94, 0.25);
-  border-left: 4px solid var(--accent-yellow);
-  padding: 1.25rem;
+  background-color: rgba(34, 90, 94, 0.2);
+  border-left: 4px solid var(--accent-teal);
+  padding: 1rem 1.25rem;
   border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+}
+
+.stat-item:hover {
+  background-color: rgba(34, 90, 94, 0.35);
+  border-left-color: var(--accent-yellow);
 }
 
 .stat-item-main {
   background-color: rgba(241, 170, 0, 0.1);
-  border-left: 4px solid var(--accent-yellow);
+  border-left-color: var(--accent-yellow);
 }
 
 .stat-value-wrapper {
@@ -367,30 +508,30 @@ section {
 
 .stat-prefix {
   font-family: var(--font-title);
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: var(--accent-yellow);
 }
 
 .stat-number {
   font-family: var(--font-title);
-  font-size: 2.75rem;
+  font-size: 2.5rem;
   color: var(--text-primary);
   line-height: 1;
 }
 
 .stat-suffix {
   font-family: var(--font-title);
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: var(--accent-yellow);
 }
 
 .stat-label {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
   font-weight: bold;
   color: var(--text-primary);
   opacity: 0.85;
-  margin-top: 0.35rem;
+  margin-top: 0.25rem;
 }
 
 /* Demografia */
@@ -532,9 +673,7 @@ section {
   border-radius: var(--radius-sm);
 }
 
-/* ==========================================================================
-   CARROSSEL EFEITO LEQUE (LANDO NORRIS INSPIRED)
-   ========================================================================== */
+/* --- Conteúdos em Destaque (Instagram Top Reels) --- */
 .fan-section {
   background-color: var(--dark-bg);
   position: relative;
@@ -563,7 +702,6 @@ section {
   align-items: center;
 }
 
-/* Card em Leque */
 .fan-card {
   position: absolute;
   width: 290px;
@@ -574,16 +712,15 @@ section {
   background: var(--dark-bg);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
   transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
-              z-index 0.3s ease,
-              box-shadow 0.4s ease,
-              border-color 0.3s ease;
+    z-index 0.3s ease,
+    box-shadow 0.4s ease,
+    border-color 0.3s ease;
   transform-origin: bottom center;
   text-decoration: none;
   cursor: pointer;
   user-select: none;
 }
 
-/* Posicionamento Inicial em Leque (Desktop) */
 .fan-card:nth-child(1) {
   transform: translateX(-340px) rotate(-16deg) translateY(20px);
   z-index: 1;
@@ -609,7 +746,6 @@ section {
   z-index: 1;
 }
 
-/* Interatividade Hover do Leque */
 .fan-deck:hover .fan-card:not(:hover) {
   opacity: 0.65;
   filter: brightness(0.8);
@@ -624,7 +760,6 @@ section {
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(241, 170, 0, 0.6);
 }
 
-/* Background Image & Overlay */
 .fan-card-bg {
   position: absolute;
   top: 0;
@@ -645,12 +780,10 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(17, 17, 17, 0.2) 0%,
-    rgba(17, 17, 17, 0.6) 50%,
-    rgba(17, 17, 17, 0.95) 100%
-  );
+  background: linear-gradient(to bottom,
+      rgba(17, 17, 17, 0.2) 0%,
+      rgba(17, 17, 17, 0.6) 50%,
+      rgba(17, 17, 17, 0.95) 100%);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -738,37 +871,6 @@ section {
   font-size: 0.85rem;
   color: var(--text-primary);
   letter-spacing: 1px;
-}
-
-/* Adaptabilidade Mobile para o Leque */
-@media (max-width: 860px) {
-  .fan-container-wrapper {
-    min-height: auto;
-  }
-  
-  .fan-deck {
-    position: relative;
-    height: auto;
-    flex-direction: row;
-    overflow-x: auto;
-    justify-content: flex-start;
-    padding: 1.5rem 1rem;
-    gap: 1.25rem;
-    scroll-snap-type: x mandatory;
-  }
-
-  .fan-card {
-    position: relative !important;
-    transform: none !important;
-    flex: 0 0 260px;
-    height: 420px;
-    scroll-snap-align: center;
-  }
-
-  .fan-deck:hover .fan-card:not(:hover) {
-    opacity: 1;
-    filter: none;
-  }
 }
 
 /* --- Projetos Section (Hover Lift) --- */
@@ -912,6 +1014,7 @@ section {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -974,7 +1077,7 @@ section {
   }
 
   .metrics-main-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   .demographics-main-layout {
@@ -990,9 +1093,55 @@ section {
   }
 }
 
+@media (min-width: 992px) {
+  .metrics-main-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .metric-card-featured {
+    grid-template-columns: 240px 1fr;
+  }
+}
+
+@media (max-width: 991px) {
+  .metric-card-video-preview {
+    height: 240px;
+  }
+}
+
 @media (min-width: 1024px) {
   .hero-title {
     font-size: 5.5rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .fan-container-wrapper {
+    min-height: auto;
+  }
+
+  .fan-deck {
+    position: relative;
+    height: auto;
+    flex-direction: row;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 1.5rem 1rem;
+    gap: 1.25rem;
+    scroll-snap-type: x mandatory;
+  }
+
+  .fan-card {
+    position: relative !important;
+    transform: none !important;
+    flex: 0 0 260px;
+    height: 420px;
+    scroll-snap-align: center;
+  }
+
+  .fan-deck:hover .fan-card:not(:hover) {
+    opacity: 1;
+    filter: none;
   }
 }
 
