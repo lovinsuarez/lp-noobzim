@@ -351,7 +351,7 @@ section {
   margin-top: 0.35rem;
 }
 
-/* --- Demografia Animada --- */
+/* Demografia */
 .demographics-wrapper {
   background: linear-gradient(145deg, #181818 0%, #0d0d0d 100%);
   border: 2px solid var(--accent-yellow);
@@ -395,7 +395,6 @@ section {
   gap: 0.5rem;
 }
 
-/* Animated Progress Bars */
 .bar-group {
   margin-bottom: 1.75rem;
 }
@@ -440,7 +439,6 @@ section {
   box-shadow: 0 0 10px rgba(241, 170, 0, 0.5);
 }
 
-/* Gender Proportion Visualizer */
 .gender-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -490,6 +488,171 @@ section {
   border-left: 5px solid var(--accent-yellow);
   padding: 1.5rem 2rem;
   border-radius: var(--radius-sm);
+}
+
+/* --- Conteúdos em Destaque (Instagram Top Reels) --- */
+.conteudos-section {
+  background-color: var(--bg-primary);
+  position: relative;
+}
+
+.reels-scroll-container {
+  display: flex;
+  gap: 1.75rem;
+  overflow-x: auto;
+  padding: 1rem 0.5rem 2rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-yellow) var(--dark-bg);
+}
+
+.reels-scroll-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.reels-scroll-container::-webkit-scrollbar-track {
+  background: var(--dark-bg);
+  border-radius: var(--radius-sm);
+}
+
+.reels-scroll-container::-webkit-scrollbar-thumb {
+  background: var(--accent-yellow);
+  border-radius: var(--radius-sm);
+}
+
+.reel-card {
+  flex: 0 0 280px;
+  scroll-snap-align: start;
+  background: var(--dark-bg);
+  border: 2px solid var(--accent-teal);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-normal);
+  position: relative;
+  text-decoration: none;
+}
+
+.reel-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-yellow);
+  box-shadow: var(--shadow-hover);
+}
+
+.reel-thumbnail-wrapper {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.reel-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.reel-card:hover .reel-thumbnail {
+  transform: scale(1.05);
+}
+
+.reel-play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 54px;
+  height: 54px;
+  background: rgba(17, 17, 17, 0.75);
+  border: 2px solid var(--accent-yellow);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-yellow);
+  font-size: 1.5rem;
+  transition: var(--transition-fast);
+  backdrop-filter: blur(4px);
+}
+
+.reel-card:hover .reel-play-overlay {
+  background: var(--accent-yellow);
+  color: var(--dark-bg);
+  scale: 1.1;
+}
+
+.reel-tag-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(17, 17, 17, 0.85);
+  border: 1px solid var(--accent-yellow);
+  color: var(--accent-yellow);
+  font-family: var(--font-title);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+}
+
+.reel-card-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  background: #141414;
+}
+
+.reel-title {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.reel-caption {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.reel-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(244, 227, 197, 0.1);
+  padding-top: 0.75rem;
+}
+
+.reel-metrics {
+  display: flex;
+  gap: 0.8rem;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: var(--accent-yellow);
+}
+
+.reel-action-link {
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  transition: var(--transition-fast);
+}
+
+.reel-card:hover .reel-action-link {
+  color: var(--accent-yellow);
 }
 
 /* --- Projetos Section (Hover Lift) --- */
@@ -697,6 +860,10 @@ section {
     grid-template-columns: 1fr 1fr;
   }
 
+  .reel-card {
+    flex: 0 0 300px;
+  }
+
   .projects-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -709,6 +876,10 @@ section {
 @media (min-width: 1024px) {
   .hero-title {
     font-size: 5rem;
+  }
+
+  .reel-card {
+    flex: 0 0 280px;
   }
 }
 
