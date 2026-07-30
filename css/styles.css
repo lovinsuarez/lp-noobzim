@@ -907,32 +907,51 @@ section {
   margin-bottom: 1rem;
 }
 
-/* --- Seção Marcas & Parceiros (CSS Grid Overlay Hover Layout) --- */
+/* --- Seção Marcas que Fortalecem (CSS Grid Lando Norris Style) --- */
 .partners-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
-.partner-hover-card {
+.partner-card {
   position: relative;
-  background-color: var(--card-bg);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-md);
-  height: 220px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: visible;
+  background: transparent;
+  user-select: none;
 }
 
-/* Borda acende com a cor amarela no hover */
-.partner-hover-card:hover {
-  border-color: var(--accent-yellow);
-  transform: translateY(-5px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+/* Bordas dinâmicas com clip-path */
+.partner-card-border-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  clip-path: polygon(0 0, 100% 0, 100% 82%, 72% 82%, 72% 100%, 0 100%);
+  transition: background 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 1;
+}
+
+.partner-card:hover .partner-card-border-bg {
+  background: var(--accent-yellow);
+  box-shadow: 0 10px 25px rgba(241, 170, 0, 0.35);
+}
+
+/* Elemento Interno com clip-path inset de 2px para simular a borda fina */
+.partner-card-inner {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background-color: #111111;
+  clip-path: polygon(0 0, 100% 0, 100% 82%, 72% 82%, 72% 100%, 0 100%);
+  overflow: hidden;
+  z-index: 2;
 }
 
 /* Camada 2: Fotografia da Campanha (Fundo) */
@@ -944,47 +963,65 @@ section {
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease, transform 0.4s ease;
   z-index: 1;
 }
 
-.partner-hover-card:hover .partner-campaign-img {
+.partner-card:hover .partner-campaign-img {
   opacity: 1;
+  transform: scale(1.04);
 }
 
 /* Camada 1: Logotipo da Marca (Frente) */
 .partner-brand-logo {
-  position: relative;
-  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-title);
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   color: var(--text-primary);
   letter-spacing: 2px;
   text-align: center;
-  padding: 1rem;
-  transition: transform 0.4s ease, opacity 0.4s ease;
+  padding: 1.5rem;
+  z-index: 2;
+  opacity: 1;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-.partner-hover-card:hover .partner-brand-logo {
-  transform: scale(0.85);
-  opacity: 0.15; /* Logotipo reduz opacidade para não atrapalhar a foto */
+.partner-card:hover .partner-brand-logo {
+  opacity: 0;
+  transform: scale(0.9);
 }
 
-/* Tag de texto no canto inferior direito */
-.partner-tag {
+/* Tag de texto no canto inferior direito, na cauda fora do recorte amarelo */
+.partner-card-tag {
   position: absolute;
   bottom: 12px;
   right: 12px;
-  background-color: rgba(17, 17, 17, 0.85);
-  border: 1px solid var(--accent-yellow);
-  color: var(--accent-yellow);
-  font-size: 0.75rem;
-  font-weight: bold;
-  padding: 0.2rem 0.5rem;
-  border-radius: var(--radius-sm);
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  letter-spacing: 1px;
   z-index: 3;
   pointer-events: none;
-  letter-spacing: 0.5px;
+  text-align: right;
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+  justify-content: flex-end;
+}
+
+.partner-card-tag .brand-name {
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+
+.partner-card-tag .brand-year {
+  color: var(--accent-yellow);
 }
 
 /* --- Footer / CTA Contact Section --- */
