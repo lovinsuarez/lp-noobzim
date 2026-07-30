@@ -16,19 +16,19 @@ LP NOOBZIM
 
 ## Versão Atual
 
-v0.1.0
+v1.0.0-MVP
 
 ## Status Geral
 
-🟡 Desenvolvimento
+🟢 MVP Concluído & Servidor Ativo
 
 ---
 
 # Sprint Atual
 
-**Sprint 1 — Inicialização e Documentação**
+**Sprint Final — Validação e Preview da Landing Page**
 
-**Objetivo:** Estruturar o projeto e preencher toda a documentação base antes de iniciar o desenvolvimento da Landing Page.
+**Objetivo:** Implementação completa da Landing Page interativa de 7 seções, Design System, animações e servindo preview em tempo real.
 
 ---
 
@@ -40,69 +40,65 @@ Documentação
 
 Estrutura Base (HTML/CSS/JS)
 
-░░░░░░░░░░ 0%
+██████████ 100%
 
 Hero Section
 
-░░░░░░░░░░ 0%
+██████████ 100%
 
 Métricas e Alcance
 
-░░░░░░░░░░ 0%
+██████████ 100%
 
 Público-Alvo
 
-░░░░░░░░░░ 0%
+██████████ 100%
 
 Projetos Principais
 
-░░░░░░░░░░ 0%
+██████████ 100%
 
 Ações Sociais
 
-░░░░░░░░░░ 0%
+██████████ 100%
 
-Marcas Parceiras
+Marcas Parceiras (Marquee)
 
-░░░░░░░░░░ 0%
+██████████ 100%
 
-Footer / CTA
+Footer / CTA Contato
 
-░░░░░░░░░░ 0%
+██████████ 100%
 
-Deploy (Vercel)
+Deploy / Preview Local
 
-░░░░░░░░░░ 0%
+██████████ 100%
 
 ---
 
 # Última Atividade
 
-**Preenchimento completo da documentação do projeto.**
+**Desenvolvimento completo da Landing Page de 7 Seções para o Mídia Kit do Noobzim.**
 
 Data: 2026-07-30
 
-Todos os documentos em `docs/` foram criados e preenchidos com base no PROJECT_BRIEF.md. O PROJECT_TASKS.md e o PROJECT_STATUS.md foram atualizados.
+- HTML5 semântico com todas as seções e âncoras funcionais (`index.html`).
+- Design System CSS completo com variáveis `:root`, paleta terrosa (`#9c634c`), destaques amarelos (`#f1aa00`) e azuis (`#225a5e`), animações `btn-pulse`, `Hover Lift` nos cards e `Infinite Marquee` (`css/styles.css`).
+- JavaScript Vanilla com `IntersectionObserver` para incremento dinâmico dos contadores de métricas, barras do público-alvo e revelação de seções ao rolar (`js/main.js`).
+- Servidor de preview local ativo em `http://localhost:3000`.
+- Commit no repositório Git na branch `develop`.
 
 ---
 
 # Próxima Atividade
 
-**Sprint 2 — Estrutura Base e Hero Section**
-
-- Criar estrutura de pastas do projeto (`css/`, `js/`, `assets/`).
-- Criar `index.html` com estrutura semântica completa.
-- Criar `css/styles.css` com variáveis CSS do Design System.
-- Criar `js/main.js` com estrutura base.
-- Implementar a Hero Section completa (layout, tipografia, CTA com animação Pulse).
-- Garantir responsividade mobile da Hero Section.
-- Conectar repositório GitHub à Vercel e publicar preview.
+- Merge na branch `main` e deploy final de produção na Vercel quando solicitado pelo cliente.
 
 ---
 
 # Bloqueios
 
-- **Assets pendentes:** Imagens do criador (foto, projetos) e logotipos das marcas parceiras ainda não fornecidos pelo cliente. Isso bloqueará a implementação completa das seções de Projetos e Marcas Parceiras.
+Nenhum bloqueio técnico.
 
 ---
 
@@ -111,38 +107,12 @@ Todos os documentos em `docs/` foram criados e preenchidos com base no PROJECT_B
 | Módulo | Status |
 |--------|--------|
 | Documentação | Concluído |
-| Estrutura Base (HTML/CSS/JS) | Não iniciado |
-| Hero Section | Não iniciado |
-| Métricas e Alcance | Não iniciado |
-| Público-Alvo | Não iniciado |
-| Projetos Principais | Não iniciado |
-| Ações Sociais | Não iniciado |
-| Marcas Parceiras | Não iniciado |
-| Footer / CTA de Contato | Não iniciado |
-| Deploy (Vercel) | Não iniciado |
-
----
-
-# Últimas Decisões
-
-| Data | Decisão |
-|------|---------|
-| 2026-07-30 | Hospedagem definida como Vercel. |
-| 2026-07-30 | Responsividade mobile-first obrigatória desde o início. |
-| 2026-07-30 | Logotipos das marcas parceiras serão implementados em versão futura. |
-| 2026-07-30 | Google Analytics e Meta Pixel serão implementados pós-MVP. |
-| 2026-07-30 | Sem domínio próprio no momento (usar subdomínio Vercel). |
-
----
-
-# Próxima Revisão
-
-**Após a conclusão da Sprint 2 (Estrutura Base e Hero Section).**
-
----
-
-# Observações
-
-- O projeto encontra-se com documentação completa e pronto para início do desenvolvimento.
-- O maior risco atual é a ausência de assets (imagens e logos) que dependem do fornecimento pelo cliente.
-- Toda e qualquer mudança de escopo deve ser registrada no PROJECT_BRIEF.md antes de implementada.
+| Estrutura Base (HTML/CSS/JS) | Concluído |
+| Hero Section (Pulse CTA) | Concluído |
+| Métricas e Alcance (Contador JS) | Concluído |
+| Público-Alvo (Demografia) | Concluído |
+| Projetos Principais (Hover Lift) | Concluído |
+| Ações Sociais | Concluído |
+| Marcas Parceiras (Infinite Marquee) | Concluído |
+| Footer / CTA de Contato (Mailto) | Concluído |
+| Servidor Local / Preview | Concluído (`http://localhost:3000`) |
