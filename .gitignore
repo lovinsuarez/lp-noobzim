@@ -1,0 +1,23 @@
+# Dependências
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Builds
+dist/
+build/
+
+# Antigravity (AI agent)
+.gemini/
