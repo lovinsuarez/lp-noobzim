@@ -21,9 +21,9 @@
 
   /* Transitions & Shadows */
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
-  --shadow-hover: 0 12px 28px rgba(0, 0, 0, 0.6), 0 0 15px rgba(241, 170, 0, 0.3);
+  --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(241, 170, 0, 0.4);
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 20px;
@@ -196,7 +196,6 @@ a {
   z-index: 2;
 }
 
-/* Aumentar o Nicho */
 .hero-badge {
   display: inline-block;
   background-color: var(--dark-bg);
@@ -240,7 +239,6 @@ a {
   animation: heroFadeUp 1s cubic-bezier(0.1, 0.9, 0.2, 1) 0.6s forwards;
 }
 
-/* Imagem de Canto Ajustada & Animada */
 .hero-image-wrapper {
   position: relative;
   display: flex;
@@ -259,58 +257,29 @@ a {
              heroFloat 4s ease-in-out infinite 1.5s;
 }
 
-/* --- Hero Keyframe Animations --- */
 @keyframes heroFadeDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  0% { opacity: 0; transform: translateY(-30px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes heroFadeLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  0% { opacity: 0; transform: translateX(-40px); }
+  100% { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes heroFadeUp {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes heroImgEntrance {
-  0% {
-    opacity: 0;
-    transform: translateY(60px) scale(0.92);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+  0% { opacity: 0; transform: translateY(60px) scale(0.92); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 @keyframes heroFloat {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 /* --- Section Global Styling --- */
@@ -563,169 +532,243 @@ section {
   border-radius: var(--radius-sm);
 }
 
-/* --- Conteúdos em Destaque (Instagram Top Reels) --- */
-.conteudos-section {
-  background-color: var(--bg-primary);
+/* ==========================================================================
+   CARROSSEL EFEITO LEQUE (LANDO NORRIS INSPIRED)
+   ========================================================================== */
+.fan-section {
+  background-color: var(--dark-bg);
   position: relative;
-}
-
-.reels-scroll-container {
-  display: flex;
-  gap: 1.75rem;
-  overflow-x: auto;
-  padding: 1rem 0.5rem 2rem;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent-yellow) var(--dark-bg);
-}
-
-.reels-scroll-container::-webkit-scrollbar {
-  height: 8px;
-}
-
-.reels-scroll-container::-webkit-scrollbar-track {
-  background: var(--dark-bg);
-  border-radius: var(--radius-sm);
-}
-
-.reels-scroll-container::-webkit-scrollbar-thumb {
-  background: var(--accent-yellow);
-  border-radius: var(--radius-sm);
-}
-
-.reel-card {
-  flex: 0 0 280px;
-  scroll-snap-align: start;
-  background: var(--dark-bg);
-  border: 2px solid var(--accent-teal);
-  border-radius: var(--radius-md);
+  padding: 6rem 0 7rem;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: var(--transition-normal);
-  position: relative;
-  text-decoration: none;
 }
 
-.reel-card:hover {
-  transform: translateY(-8px);
-  border-color: var(--accent-yellow);
-  box-shadow: var(--shadow-hover);
-}
-
-.reel-thumbnail-wrapper {
+.fan-container-wrapper {
   position: relative;
   width: 100%;
-  height: 380px;
-  overflow: hidden;
-  background-color: #000;
+  min-height: 540px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px;
+  padding: 2rem 0;
 }
 
-.reel-thumbnail {
+.fan-deck {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  height: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card em Leque */
+.fan-card {
+  position: absolute;
+  width: 290px;
+  height: 460px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 3px solid var(--accent-yellow);
+  background: var(--dark-bg);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+              z-index 0.3s ease,
+              box-shadow 0.4s ease,
+              border-color 0.3s ease;
+  transform-origin: bottom center;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Posicionamento Inicial em Leque (Desktop) */
+.fan-card:nth-child(1) {
+  transform: translateX(-340px) rotate(-16deg) translateY(20px);
+  z-index: 1;
+}
+
+.fan-card:nth-child(2) {
+  transform: translateX(-170px) rotate(-8deg) translateY(8px);
+  z-index: 2;
+}
+
+.fan-card:nth-child(3) {
+  transform: translateX(0) rotate(0deg) translateY(0);
+  z-index: 3;
+}
+
+.fan-card:nth-child(4) {
+  transform: translateX(170px) rotate(8deg) translateY(8px);
+  z-index: 2;
+}
+
+.fan-card:nth-child(5) {
+  transform: translateX(340px) rotate(16deg) translateY(20px);
+  z-index: 1;
+}
+
+/* Interatividade Hover do Leque */
+.fan-deck:hover .fan-card:not(:hover) {
+  opacity: 0.65;
+  filter: brightness(0.8);
+}
+
+.fan-card:hover {
+  transform: translateX(0) rotate(0deg) translateY(-25px) scale(1.12) !important;
+  z-index: 30 !important;
+  opacity: 1 !important;
+  filter: brightness(1) !important;
+  border-color: var(--accent-yellow);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(241, 170, 0, 0.6);
+}
+
+/* Background Image & Overlay */
+.fan-card-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transition: transform 0.6s ease;
 }
 
-.reel-card:hover .reel-thumbnail {
-  transform: scale(1.05);
+.fan-card:hover .fan-card-bg {
+  transform: scale(1.08);
 }
 
-.reel-play-overlay {
+.fan-card-overlay {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 54px;
-  height: 54px;
-  background: rgba(17, 17, 17, 0.75);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(17, 17, 17, 0.2) 0%,
+    rgba(17, 17, 17, 0.6) 50%,
+    rgba(17, 17, 17, 0.95) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  z-index: 2;
+}
+
+.fan-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fan-badge {
+  background-color: var(--accent-yellow);
+  color: var(--dark-bg);
+  font-family: var(--font-title);
+  font-size: 0.8rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-sm);
+  letter-spacing: 1px;
+}
+
+.fan-play-btn {
+  width: 44px;
+  height: 44px;
+  background: rgba(17, 17, 17, 0.85);
   border: 2px solid var(--accent-yellow);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--accent-yellow);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   transition: var(--transition-fast);
   backdrop-filter: blur(4px);
 }
 
-.reel-card:hover .reel-play-overlay {
+.fan-card:hover .fan-play-btn {
   background: var(--accent-yellow);
   color: var(--dark-bg);
-  scale: 1.1;
+  transform: scale(1.15);
 }
 
-.reel-tag-badge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: rgba(17, 17, 17, 0.85);
-  border: 1px solid var(--accent-yellow);
-  color: var(--accent-yellow);
+.fan-card-body {
+  margin-top: auto;
+}
+
+.fan-card-title {
   font-family: var(--font-title);
-  font-size: 0.75rem;
-  padding: 0.25rem 0.6rem;
-  border-radius: var(--radius-sm);
-  text-transform: uppercase;
-}
-
-.reel-card-body {
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  justify-content: space-between;
-  background: #141414;
-}
-
-.reel-title {
-  font-size: 1.1rem;
+  font-size: 1.6rem;
   color: var(--text-primary);
+  line-height: 1.15;
   margin-bottom: 0.5rem;
-  line-height: 1.3;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
-.reel-caption {
+.fan-card-desc {
   font-size: 0.9rem;
-  opacity: 0.8;
-  margin-bottom: 1rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  color: var(--text-primary);
+  opacity: 0.85;
+  margin-bottom: 1.25rem;
+  line-height: 1.35;
 }
 
-.reel-footer {
+.fan-card-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid rgba(244, 227, 197, 0.1);
-  padding-top: 0.75rem;
+  border-top: 1px solid rgba(244, 227, 197, 0.2);
+  padding-top: 0.85rem;
 }
 
-.reel-metrics {
+.fan-metrics {
   display: flex;
-  gap: 0.8rem;
-  font-size: 0.85rem;
+  gap: 0.85rem;
+  font-size: 0.9rem;
   font-weight: bold;
   color: var(--accent-yellow);
 }
 
-.reel-action-link {
+.fan-link-text {
   font-family: var(--font-title);
   font-size: 0.85rem;
   color: var(--text-primary);
-  display: flex;
-  align-items: center;
-  gap: 0.2rem;
-  transition: var(--transition-fast);
+  letter-spacing: 1px;
 }
 
-.reel-card:hover .reel-action-link {
-  color: var(--accent-yellow);
+/* Adaptabilidade Mobile para o Leque */
+@media (max-width: 860px) {
+  .fan-container-wrapper {
+    min-height: auto;
+  }
+  
+  .fan-deck {
+    position: relative;
+    height: auto;
+    flex-direction: row;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 1.5rem 1rem;
+    gap: 1.25rem;
+    scroll-snap-type: x mandatory;
+  }
+
+  .fan-card {
+    position: relative !important;
+    transform: none !important;
+    flex: 0 0 260px;
+    height: 420px;
+    scroll-snap-align: center;
+  }
+
+  .fan-deck:hover .fan-card:not(:hover) {
+    opacity: 1;
+    filter: none;
+  }
 }
 
 /* --- Projetos Section (Hover Lift) --- */
@@ -938,10 +981,6 @@ section {
     grid-template-columns: 1fr 1fr;
   }
 
-  .reel-card {
-    flex: 0 0 300px;
-  }
-
   .projects-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -954,10 +993,6 @@ section {
 @media (min-width: 1024px) {
   .hero-title {
     font-size: 5.5rem;
-  }
-
-  .reel-card {
-    flex: 0 0 280px;
   }
 }
 
