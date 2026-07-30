@@ -25,7 +25,7 @@ function initMetricsCounter() {
         obs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.4 });
+  }, { threshold: 0.3 });
 
   counterElements.forEach(el => observer.observe(el));
 }
@@ -35,9 +35,10 @@ function initMetricsCounter() {
  * @param {HTMLElement} element 
  */
 function animateCounter(element) {
-  const target = parseInt(element.dataset.target, 10);
+  const target = parseFloat(element.dataset.target);
   if (isNaN(target)) return;
 
+  const hasDecimals = element.dataset.decimals !== undefined;
   const duration = 1800; // ms
   const stepTime = 20;   // ms
   const steps = duration / stepTime;
@@ -47,10 +48,10 @@ function animateCounter(element) {
   const timer = setInterval(() => {
     current += increment;
     if (current >= target) {
-      element.textContent = target.toLocaleString('pt-BR');
+      element.textContent = hasDecimals ? target.toFixed(0) : Math.round(target).toLocaleString('pt-BR');
       clearInterval(timer);
     } else {
-      element.textContent = Math.floor(current).toLocaleString('pt-BR');
+      element.textContent = hasDecimals ? Math.floor(current).toString() : Math.floor(current).toLocaleString('pt-BR');
     }
   }, stepTime);
 }
