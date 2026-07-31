@@ -21,3 +21,5 @@ build/
 
 # Antigravity (AI agent)
 .gemini/
+
+.vercel
