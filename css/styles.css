@@ -150,6 +150,19 @@ a {
   justify-content: space-between;
 }
 
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+}
+
 .logo-text {
   font-family: var(--font-title);
   font-size: 1.8rem;
@@ -177,7 +190,7 @@ a {
 /* --- Hero Section com Imagem de Fundo & Animações --- */
 .hero-section {
   position: relative;
-  padding: 5rem 0 6rem;
+  padding: 5rem 0 0; /* Glue to bottom of section */
   background: linear-gradient(rgba(17, 17, 17, 0.45), rgba(17, 17, 17, 0.65)),
               url('../assets/images/hero-bg.jpg') no-repeat center center / cover;
   overflow: hidden;
@@ -194,6 +207,7 @@ a {
   align-items: flex-end;
   position: relative;
   z-index: 2;
+  width: 100%;
 }
 
 .hero-badge {
@@ -248,97 +262,56 @@ a {
   z-index: 3;
 }
 
+/* Outer wrapper for right alignment edge-to-edge */
 .hero-image-wrapper {
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: flex-end;
   width: 100%;
 }
 
-/* Glowing Aura Behind Renan's Cutout */
+/* Glowing back-light glow */
 .hero-image-wrapper::before {
   content: '';
   position: absolute;
-  width: 320px;
-  height: 320px;
-  background: radial-gradient(circle, rgba(241, 170, 0, 0.35) 0%, rgba(241, 170, 0, 0) 70%);
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  filter: blur(35px);
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, rgba(241, 170, 0, 0.22) 0%, rgba(241, 170, 0, 0) 70%);
+  bottom: 0px;
+  right: 0px;
+  filter: blur(40px);
   z-index: 1;
   pointer-events: none;
 }
 
-/* Background Collage Cards (Gaming / Skate Snapshots) */
-.hero-collage-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
+/* Custom illustration image glued to the right edge with lightening blend-mode */
+.hero-img-full-right {
   width: 100%;
-  height: 100%;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.hero-collage-card {
-  position: absolute;
-  width: 150px;
-  height: 200px;
-  border-radius: var(--radius-sm);
-  border: 3px solid var(--text-primary);
-  background-color: var(--dark-bg);
-  overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
-  transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
-  z-index: 2;
-}
-
-.hero-collage-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.65) contrast(1.1);
-  transition: filter 0.3s ease;
-}
-
-.card-left {
-  left: 5%;
-  top: 10%;
-  transform: rotate(-12deg);
-}
-
-.card-right {
-  right: 5%;
-  top: 25%;
-  transform: rotate(10deg);
-}
-
-/* Interactive Expansion on Hover */
-.hero-image-wrapper:hover .card-left {
-  transform: rotate(-18deg) translate(-15px, -10px) scale(1.05);
-}
-
-.hero-image-wrapper:hover .card-right {
-  transform: rotate(15deg) translate(15px, -5px) scale(1.05);
-}
-
-.hero-image-wrapper:hover .hero-collage-card img {
-  filter: brightness(0.85) contrast(1.1);
-}
-
-.hero-img {
-  width: 100%;
-  max-width: 420px;
+  max-width: 540px;
   height: auto;
-  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.7));
-  transform-origin: bottom center;
-  opacity: 0;
+  display: block;
+  align-self: flex-end;
+  margin-right: 0;
+  padding-right: 0;
+  mix-blend-mode: lighten; /* Seamlessly blends the black background */
+  filter: contrast(1.05) brightness(1.05);
   position: relative;
-  z-index: 3;
-  animation: heroImgEntrance 1.2s cubic-bezier(0.17, 0.67, 0.29, 0.99) 0.3s forwards,
-             heroFloat 4s ease-in-out infinite 1.5s;
+  z-index: 2;
+  transform-origin: bottom right;
+  opacity: 0;
+  animation: heroImgEntranceRight 1.2s cubic-bezier(0.17, 0.67, 0.29, 0.99) 0.3s forwards,
+             heroFloatRight 5s ease-in-out infinite 1.5s;
+}
+
+@keyframes heroImgEntranceRight {
+  0% { opacity: 0; transform: translate(40px, 40px) scale(0.95); }
+  100% { opacity: 1; transform: translate(0, 0) scale(1); }
+}
+
+@keyframes heroFloatRight {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
 @keyframes heroFadeDown {
@@ -354,16 +327,6 @@ a {
 @keyframes heroFadeUp {
   0% { opacity: 0; transform: translateY(30px); }
   100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes heroImgEntrance {
-  0% { opacity: 0; transform: translateY(60px) scale(0.92); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-@keyframes heroFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
 }
 
 /* --- Section Global Styling --- */
@@ -557,11 +520,6 @@ section {
   font-family: var(--font-title);
   font-size: 1.8rem;
   color: var(--accent-yellow);
-}
-
-.stat-number-wrapper {
-  display: flex;
-  align-items: baseline;
 }
 
 .stat-label {
@@ -1167,6 +1125,11 @@ section {
   .hero-grid {
     grid-template-columns: 1.2fr 1fr; /* Text left (centered inside container), Image right */
     align-items: center; /* Center vertically on desktop */
+    padding-left: max(1.5rem, calc((100vw - 1200px) / 2 + 1.5rem));
+    padding-right: 0;
+    width: 100vw;
+    max-width: 100%;
+    margin: 0;
   }
 
   /* Left-side centered text column */
@@ -1175,13 +1138,17 @@ section {
     text-align: center;
     align-items: center;
     margin: 0;
+    padding-right: 2rem; /* Give some breathing room to the text */
   }
 
-  /* Right-side image column aligned at bottom/end */
+  /* Right-side image column aligned at bottom/end with zero right margin */
   .hero-image-wrapper {
     grid-column: 2;
     align-self: flex-end;
     justify-self: flex-end;
+    margin-right: 0;
+    padding-right: 0;
+    width: 100%;
   }
 
   .hero-title {
@@ -1237,30 +1204,17 @@ section {
     display: flex;
     flex-direction: column; /* Put text on top of image on mobile */
     gap: 2rem;
+    padding: 0 1.5rem;
   }
   
   .hero-image-wrapper {
     width: 100%;
     margin-top: 1rem;
+    justify-content: center;
   }
   
-  .hero-img {
-    max-width: 320px;
-  }
-  
-  .hero-collage-card {
-    width: 110px;
-    height: 150px;
-  }
-  
-  .card-left {
-    left: 2%;
-    top: 5%;
-  }
-
-  .card-right {
-    right: 2%;
-    top: 15%;
+  .hero-img-full-right {
+    max-width: 360px;
   }
 }
 
@@ -1304,4 +1258,11 @@ section {
 .fade-in-section.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-section {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
 }
