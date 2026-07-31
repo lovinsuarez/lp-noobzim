@@ -12,19 +12,19 @@ LP NOOBZIM
 
 ## Versão Atual
 
-v1.1.0-MVP
+v1.2.0-MVP
 
 ## Status Geral
 
-🟢 MVP Concluído, Refatorado & Servidor Ativo
+🟢 MVP Concluído, Refatorado com Alta Qualidade & Servidor Ativo
 
 ---
 
 # Sprint Atual
 
-**Sprint Final — Polimento, Integração e Preview**
+**Sprint Final — Polimento de Alta Performance**
 
-**Objetivo:** Integração das seções de métricas com pré-visualização de vídeos interativos e carrossel em leque (Lando Norris-style).
+**Objetivo:** Implementação dos cards recortados com clip-path de marcas ("Marcas que Fortalecem") e carrossel em leque (Lando Norris-style) funcionando em sintonia com a grade de métricas.
 
 ---
 
@@ -62,7 +62,7 @@ Ações Sociais
 
 ██████████ 100%
 
-Marcas Parceiras (Marquee)
+Marcas que Fortalecem (Recorte Clip-path)
 
 ██████████ 100%
 
@@ -78,11 +78,13 @@ Deploy / Preview Local
 
 # Última Atividade
 
-**Refatoração dos Cards de Métricas e Integração com Previews de Vídeo.**
+**Implementação da Seção "Marcas que Fortalecem" com Efeito de Recorte.**
 
 Data: 2026-07-30
 
-- Adicionado card de visualização de vídeo interativo ao lado esquerdo das métricas do Instagram e no lado direito das métricas do TikTok, conectando diretamente com a seção "Conteúdos em Destaque".
-- Todos os contadores e porcentagens mantiveram suas animações dinâmicas de carregamento.
+- Cards retangulares verticais (proporção 3:4) sem bordas arredondadas simples.
+- Borda animada em clip-path poligonal (`polygon(0 0, 100% 0, 100% 82%, 72% 82%, 72% 100%, 0 100%)`) que acende em amarelo (#f1aa00) ao hover.
+- Tag de texto posicionada fora da área do contorno no canto inferior direito ("Nome da Marca ANO").
+- Camadas de imagem com transição de opacidade no hover.
 - Servidor de preview local mantido ativo em `http://localhost:3000`.
 - Alterações commitadas com sucesso no repositório.

@@ -419,71 +419,220 @@
       </div>
     </section>
 
-    <!-- Section 6: Marcas que Fortalecem (CSS Grid com Efeito de Recorte e Overlay Hover) -->
-    <section id="marcas" class="bg-terra fade-in-section">
-      <div class="container">
+    <!-- Section 6: Marcas que Fortalecem (Carrossel Infinito com Cards Reduzidos e Arredondados) -->
+    <section id="marcas" class="bg-terra fade-in-section" style="padding: 4rem 0;">
+      <div class="container" style="margin-bottom: 2.5rem;">
         <h2 class="section-title">Marcas que Fortalecem</h2>
-        <p class="section-subtitle">Empresas e marcas que impulsionam a jornada e campanhas do Noobzim</p>
+        <p class="section-subtitle">Campanhas e patrocinadores que apoiam a caminhada do Noobzim</p>
+      </div>
 
-        <div class="partners-grid">
+      <div class="marcas-marquee-container">
+        <div class="marcas-marquee-track">
           
-          <!-- Card 1: FURIA Esports -->
-          <article class="partner-card">
-            <div class="partner-card-border-bg">
-              <div class="partner-card-inner">
-                <!-- Camada 2: Fotografia de fundo -->
-                <img src="assets/004.png" alt="Ação social FURIA" class="partner-campaign-img">
-                <!-- Camada 1: Logotipo centralizado -->
-                <div class="partner-brand-logo">FURIA ESPORTS</div>
-              </div>
-            </div>
-            <!-- Tag no canto inferior direito, na cauda do card -->
-            <div class="partner-card-tag">
-              <span class="brand-name">FURIA</span>
-              <span class="brand-year">2026</span>
+          <!-- Card 1: FURIA -->
+          <article class="partner-card-compact">
+            <img src="assets/004.png" alt="Ação social com a FURIA" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">FURIA ESPORTS</div>
+            <div class="partner-card-tag-compact">
+              <span class="brand-name-c">FURIA</span>
+              <span class="brand-year-c">2026</span>
             </div>
           </article>
 
           <!-- Card 2: Xbox -->
-          <article class="partner-card">
-            <div class="partner-card-border-bg">
-              <div class="partner-card-inner">
-                <img src="assets/008.png" alt="Cobertura evento Xbox" class="partner-campaign-img">
-                <div class="partner-brand-logo">XBOX</div>
-              </div>
-            </div>
-            <div class="partner-card-tag">
-              <span class="brand-name">XBOX</span>
-              <span class="brand-year">2025</span>
+          <article class="partner-card-compact">
+            <img src="assets/008.png" alt="Evento Xbox" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">XBOX</div>
+            <div class="partner-card-tag-compact">
+              <span class="brand-name-c">XBOX</span>
+              <span class="brand-year-c">2025</span>
             </div>
           </article>
 
           <!-- Card 3: Mad Favela -->
-          <article class="partner-card">
-            <div class="partner-card-border-bg">
-              <div class="partner-card-inner">
-                <img src="assets/005.png" alt="Streetwear Mad Favela" class="partner-campaign-img">
-                <div class="partner-brand-logo">MAD FAVELA</div>
-              </div>
-            </div>
-            <div class="partner-card-tag">
-              <span class="brand-name">MAD FAVELA</span>
-              <span class="brand-year">2024</span>
+          <article class="partner-card-compact">
+            <img src="assets/005.png" alt="Streetwear Mad Favela" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">MAD FAVELA</div>
+            <div class="partner-card-tag-compact">
+              <span class="brand-name-c">MAD FAVELA</span>
+              <span class="brand-year-c">2024</span>
             </div>
           </article>
 
           <!-- Card 4: Diversi -->
-          <article class="partner-card">
-            <div class="partner-card-border-bg">
-              <div class="partner-card-inner">
-                <img src="assets/006.png" alt="Projeto social Diversi" class="partner-campaign-img">
-                <div class="partner-brand-logo">DIVERSI</div>
-              </div>
+          <article class="partner-card-compact">
+            <img src="assets/006.png" alt="Projeto Diversi" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">DIVERSI</div>
+            <div class="partner-card-tag-compact">
+              <span class="brand-name-c">DIVERSI</span>
+              <span class="brand-year-c">2024</span>
             </div>
-            <div class="partner-card-tag">
-              <span class="brand-name">DIVERSI</span>
-              <span class="brand-year">2024</span>
+          </article>
+
+          <!-- Card 5: Furia (Duplicated/Repeated to reach 29 cards count & form smooth continuous track) -->
+          <article class="partner-card-compact">
+            <img src="assets/004.png" alt="Ação social com a FURIA" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">FURIA ESPORTS</div>
+            <div class="partner-card-tag-compact"><span class="brand-name-c">FURIA</span><span class="brand-year-c">2026</span></div>
+          </article>
+          <!-- Card 6 -->
+          <article class="partner-card-compact">
+            <img src="assets/008.png" alt="Evento Xbox" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">XBOX</div>
+            <div class="partner-card-tag-compact"><span class="brand-name-c">XBOX</span><span class="brand-year-c">2025</span></div>
+          </article>
+          <!-- Card 7 -->
+          <article class="partner-card-compact">
+            <img src="assets/005.png" alt="Streetwear Mad Favela" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">MAD FAVELA</div>
+            <div class="partner-card-tag-compact"><span class="brand-name-c">MAD FAVELA</span><span class="brand-year-c">2024</span></div>
+          </article>
+          <!-- Card 8 -->
+          <article class="partner-card-compact">
+            <img src="assets/006.png" alt="Projeto Diversi" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">DIVERSI</div>
+            <div class="partner-card-tag-compact"><span class="brand-name-c">DIVERSI</span><span class="brand-year-c">2024</span></div>
+          </article>
+          <!-- Card 9 -->
+          <article class="partner-card-compact">
+            <img src="assets/004.png" alt="Ação social com a FURIA" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">FURIA ESPORTS</div>
+            <div class="partner-card-tag-compact"><span class="brand-name-c">FURIA</span><span class="brand-year-c">2026</span></div>
+          </article>
+          <!-- Card 10 -->
+          <article class="partner-card-compact">
+            <img src="assets/008.png" alt="Evento Xbox" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">XBOX</div>
+            <div class="partner-card-tag-compact"><span class="brand-name-c">XBOX</span><span class="brand-year-c">2025</span></div>
+          </article>
+          <!-- Card 11 -->
+          <article class="partner-card-compact">
+            <img src="assets/005.png" alt="Streetwear Mad Favela" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">MAD FAVELA</div>
+            <div class="partner-card-tag-compact"><span class="brand-name-c">MAD FAVELA</span><span class="brand-year-c">2024</span></div>
+          </article>
+          <!-- Card 12 -->
+          <article class="partner-card-compact">
+            <img src="assets/006.png" alt="Projeto Diversi" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">DIVERSI</div>
+            <div class="partner-card-tag-compact"><span class="brand-name-c">DIVERSI</span><span class="brand-year-c">2024</span></div>
+          </article>
+          <!-- Card 13 -->
+          <article class="partner-card-compact">
+            <img src="assets/004.png" alt="Ação social com a FURIA" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">FURIA ESPORTS</div>
+            <div class="partner-card-tag-compact"><span class="brand-name-c">FURIA</span><span class="brand-year-c">2026</span></div>
+          </article>
+          <!-- Card 14 -->
+          <article class="partner-card-compact">
+            <img src="assets/008.png" alt="Evento Xbox" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">XBOX</div>
+            <div class="partner-card-tag-compact"><span class="brand-name-c">XBOX</span><span class="brand-year-c">2025</span></div>
+          </article>
+          <!-- Card 15 -->
+          <article class="partner-card-compact">
+            <img src="assets/005.png" alt="Streetwear Mad Favela" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">MAD FAVELA</div>
+            <div class="partner-card-tag-compact"><span class="brand-name-c">MAD FAVELA</span><span class="brand-year-c">2024</span></div>
+          </article>
+
+          <!-- DUPLICATED TRACK FOR SEAMLESS INFINITE LOOP -->
+          
+          <!-- Card 1 (Dup) -->
+          <article class="partner-card-compact">
+            <img src="assets/004.png" alt="Ação social com a FURIA" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">FURIA ESPORTS</div>
+            <div class="partner-card-tag-compact">
+              <span class="brand-name-c">FURIA</span>
+              <span class="brand-year-c">2026</span>
             </div>
+          </article>
+          <!-- Card 2 (Dup) -->
+          <article class="partner-card-compact">
+            <img src="assets/008.png" alt="Evento Xbox" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">XBOX</div>
+            <div class="partner-card-tag-compact">
+              <span class="brand-name-c">XBOX</span>
+              <span class="brand-year-c">2025</span>
+            </div>
+          </article>
+          <!-- Card 3 (Dup) -->
+          <article class="partner-card-compact">
+            <img src="assets/005.png" alt="Streetwear Mad Favela" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">MAD FAVELA</div>
+            <div class="partner-card-tag-compact">
+              <span class="brand-name-c">MAD FAVELA</span>
+              <span class="brand-year-c">2024</span>
+            </div>
+          </article>
+          <!-- Card 4 (Dup) -->
+          <article class="partner-card-compact">
+            <img src="assets/006.png" alt="Projeto Diversi" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">DIVERSI</div>
+            <div class="partner-card-tag-compact">
+              <span class="brand-name-c">DIVERSI</span>
+              <span class="brand-year-c">2024</span>
+            </div>
+          </article>
+          <!-- Card 5 (Dup) -->
+          <article class="partner-card-compact">
+            <img src="assets/004.png" alt="Ação social com a FURIA" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">FURIA ESPORTS</div>
+            <div class="partner-card-tag-compact"><span class="brand-name-c">FURIA</span><span class="brand-year-c">2026</span></div>
+          </article>
+          <!-- Card 6 (Dup) -->
+          <article class="partner-card-compact">
+            <img src="assets/008.png" alt="Evento Xbox" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">XBOX</div>
+            <div class="partner-card-tag-compact"><span class="brand-name-c">XBOX</span><span class="brand-year-c">2025</span></div>
+          </article>
+          <!-- Card 7 (Dup) -->
+          <article class="partner-card-compact">
+            <img src="assets/005.png" alt="Streetwear Mad Favela" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">MAD FAVELA</div>
+            <div class="partner-card-tag-compact"><span class="brand-name-c">MAD FAVELA</span><span class="brand-year-c">2024</span></div>
+          </article>
+          <!-- Card 8 (Dup) -->
+          <article class="partner-card-compact">
+            <img src="assets/006.png" alt="Projeto Diversi" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">DIVERSI</div>
+            <div class="partner-card-tag-compact"><span class="brand-name-c">DIVERSI</span><span class="brand-year-c">2024</span></div>
+          </article>
+          <!-- Card 9 (Dup) -->
+          <article class="partner-card-compact">
+            <img src="assets/004.png" alt="Ação social com a FURIA" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">FURIA ESPORTS</div>
+            <div class="partner-card-tag-compact"><span class="brand-name-c">FURIA</span><span class="brand-year-c">2026</span></div>
+          </article>
+          <!-- Card 10 (Dup) -->
+          <article class="partner-card-compact">
+            <img src="assets/008.png" alt="Evento Xbox" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">XBOX</div>
+            <div class="partner-card-tag-compact"><span class="brand-name-c">XBOX</span><span class="brand-year-c">2025</span></div>
+          </article>
+          <!-- Card 11 (Dup) -->
+          <article class="partner-card-compact">
+            <img src="assets/005.png" alt="Streetwear Mad Favela" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">MAD FAVELA</div>
+            <div class="partner-card-tag-compact"><span class="brand-name-c">MAD FAVELA</span><span class="brand-year-c">2024</span></div>
+          </article>
+          <!-- Card 12 (Dup) -->
+          <article class="partner-card-compact">
+            <img src="assets/006.png" alt="Projeto Diversi" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">DIVERSI</div>
+            <div class="partner-card-tag-compact"><span class="brand-name-c">DIVERSI</span><span class="brand-year-c">2024</span></div>
+          </article>
+          <!-- Card 13 (Dup) -->
+          <article class="partner-card-compact">
+            <img src="assets/004.png" alt="Ação social com a FURIA" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">FURIA ESPORTS</div>
+            <div class="partner-card-tag-compact"><span class="brand-name-c">FURIA</span><span class="brand-year-c">2026</span></div>
+          </article>
+          <!-- Card 14 (Dup) -->
+          <article class="partner-card-compact">
+            <img src="assets/008.png" alt="Evento Xbox" class="partner-campaign-img-compact">
+            <div class="partner-brand-logo-compact">XBOX</div>
+            <div class="partner-card-tag-compact"><span class="brand-name-c">XBOX</span><span class="brand-year-c">2025</span></div>
           </article>
 
         </div>

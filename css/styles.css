@@ -907,55 +907,53 @@ section {
   margin-bottom: 1rem;
 }
 
-/* --- Seção Marcas que Fortalecem (CSS Grid Lando Norris Style) --- */
-.partners-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2.5rem;
+/* ==========================================================================
+   SEÇÃO MARCAS QUE FORTALECEM (CARROSSEL INFINITO COMPACTO)
+   ========================================================================== */
+.marcas-marquee-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 3rem 0;
+  background-color: var(--dark-bg);
+  border-top: 3px solid var(--accent-yellow);
+  border-bottom: 3px solid var(--accent-yellow);
 }
 
-.partner-card {
+.marcas-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 2.5rem;
+  animation: marcasMarquee 40s linear infinite;
+}
+
+.marcas-marquee-container:hover .marcas-marquee-track {
+  animation-play-state: paused;
+}
+
+/* Card Reduzido e Arredondado (Lando Norris Inspired com 12px border-radius) */
+.partner-card-compact {
   position: relative;
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  overflow: visible;
-  background: transparent;
+  width: 200px;
+  height: 260px;
+  overflow: hidden;
+  background-color: #111111;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   user-select: none;
 }
 
-/* Bordas dinâmicas com clip-path */
-.partner-card-border-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.1);
-  clip-path: polygon(0 0, 100% 0, 100% 82%, 72% 82%, 72% 100%, 0 100%);
-  transition: background 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
-  z-index: 1;
-}
-
-.partner-card:hover .partner-card-border-bg {
-  background: var(--accent-yellow);
-  box-shadow: 0 10px 25px rgba(241, 170, 0, 0.35);
-}
-
-/* Elemento Interno com clip-path inset de 2px para simular a borda fina */
-.partner-card-inner {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
-  background-color: #111111;
-  clip-path: polygon(0 0, 100% 0, 100% 82%, 72% 82%, 72% 100%, 0 100%);
-  overflow: hidden;
-  z-index: 2;
+.partner-card-compact:hover {
+  border-color: var(--accent-yellow);
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(241, 170, 0, 0.25);
 }
 
 /* Camada 2: Fotografia da Campanha (Fundo) */
-.partner-campaign-img {
+.partner-campaign-img-compact {
   position: absolute;
   top: 0;
   left: 0;
@@ -967,13 +965,13 @@ section {
   z-index: 1;
 }
 
-.partner-card:hover .partner-campaign-img {
+.partner-card-compact:hover .partner-campaign-img-compact {
   opacity: 1;
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 
 /* Camada 1: Logotipo da Marca (Frente) */
-.partner-brand-logo {
+.partner-brand-logo-compact {
   position: absolute;
   top: 0;
   left: 0;
@@ -983,45 +981,55 @@ section {
   align-items: center;
   justify-content: center;
   font-family: var(--font-title);
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   color: var(--text-primary);
   letter-spacing: 2px;
   text-align: center;
-  padding: 1.5rem;
+  padding: 1rem;
   z-index: 2;
   opacity: 1;
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-.partner-card:hover .partner-brand-logo {
+.partner-card-compact:hover .partner-brand-logo-compact {
   opacity: 0;
   transform: scale(0.9);
 }
 
-/* Tag de texto no canto inferior direito, na cauda fora do recorte amarelo */
-.partner-card-tag {
+/* Tag no Canto Inferior Direito */
+.partner-card-tag-compact {
   position: absolute;
-  bottom: 12px;
-  right: 12px;
-  font-family: var(--font-title);
-  font-size: 1.15rem;
-  letter-spacing: 1px;
+  bottom: 8px;
+  right: 8px;
+  background-color: rgba(17, 17, 17, 0.85);
+  border: 1px solid var(--accent-yellow);
+  color: var(--accent-yellow);
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
   z-index: 3;
   pointer-events: none;
-  text-align: right;
+  letter-spacing: 0.5px;
   display: flex;
-  gap: 0.5rem;
-  align-items: baseline;
-  justify-content: flex-end;
+  gap: 0.3rem;
 }
 
-.partner-card-tag .brand-name {
+.partner-card-tag-compact .brand-name-c {
   color: var(--text-primary);
-  text-transform: uppercase;
 }
 
-.partner-card-tag .brand-year {
+.partner-card-tag-compact .brand-year-c {
   color: var(--accent-yellow);
+}
+
+@keyframes marcasMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* --- Footer / CTA Contact Section --- */
