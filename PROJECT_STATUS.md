@@ -12,19 +12,19 @@ LP NOOBZIM
 
 ## Versão Atual
 
-v1.2.0-MVP
+v1.3.0-MVP
 
 ## Status Geral
 
-🟢 MVP Concluído, Refatorado com Alta Qualidade & Servidor Ativo
+🟢 MVP Concluído, Refatorado de acordo com as Diretrizes e Publicado Online
 
 ---
 
 # Sprint Atual
 
-**Sprint Final — Polimento de Alta Performance**
+**Sprint Final — Polimento, Layout da Primeira Seção & Deploy**
 
-**Objetivo:** Implementação dos cards recortados com clip-path de marcas ("Marcas que Fortalecem") e carrossel em leque (Lando Norris-style) funcionando em sintonia com a grade de métricas.
+**Objetivo:** Centralização de conteúdo na Hero Section, alinhamento lateral esquerdo da imagem com glow de fundo (desktop), deploy de produção na Vercel e publicação final no GitHub.
 
 ---
 
@@ -38,7 +38,7 @@ Estrutura Base (HTML/CSS/JS)
 
 ██████████ 100%
 
-Hero Section (Com Fundo & Animação)
+Hero Section (Texto Centralizado & Glow)
 
 ██████████ 100%
 
@@ -62,7 +62,7 @@ Ações Sociais
 
 ██████████ 100%
 
-Marcas que Fortalecem (Recorte Clip-path)
+Marcas que Fortalecem (Carrossel Compacto)
 
 ██████████ 100%
 
@@ -70,7 +70,7 @@ Footer / CTA Contato
 
 ██████████ 100%
 
-Deploy / Preview Local
+Deploy Online (Vercel Production Live)
 
 ██████████ 100%
 
@@ -78,13 +78,11 @@ Deploy / Preview Local
 
 # Última Atividade
 
-**Implementação da Seção "Marcas que Fortalecem" com Efeito de Recorte.**
+**Ajuste da Hero Section (Primeira Seção) e Sincronização nos Servidores.**
 
 Data: 2026-07-30
 
-- Cards retangulares verticais (proporção 3:4) sem bordas arredondadas simples.
-- Borda animada em clip-path poligonal (`polygon(0 0, 100% 0, 100% 82%, 72% 82%, 72% 100%, 0 100%)`) que acende em amarelo (#f1aa00) ao hover.
-- Tag de texto posicionada fora da área do contorno no canto inferior direito ("Nome da Marca ANO").
-- Camadas de imagem com transição de opacidade no hover.
-- Servidor de preview local mantido ativo em `http://localhost:3000`.
-- Alterações commitadas com sucesso no repositório.
+- Inversão da ordem das colunas para colocar a imagem recortada na esquerda e o texto na direita (desktop).
+- Texto da Hero Section (Badge, Título, Bio e CTA) totalmente centralizado.
+- Criação de uma aura em gradiente radial (`::before` glow amarelado) atrás da foto de Renan para aumentar o contraste e destaque.
+- Alterações mescladas na branch `main`, enviadas para o repositório remoto do GitHub e atualizadas automaticamente na URL pública da Vercel.
