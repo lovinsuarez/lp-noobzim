@@ -45,6 +45,8 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 5.5rem;
   font-family: var(--font-body);
   background-color: var(--bg-primary);
   color: var(--text-primary);
@@ -412,9 +414,18 @@ a {
   }
 }
 
-/* --- Section Global Styling --- */
+/* --- Section Global Styling & Framing --- */
 section {
-  padding: 5rem 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 0;
+  position: relative;
 }
 
 .bg-dark {
@@ -1354,6 +1365,17 @@ section {
 
 /* Mobile & Tablet Specific Responsive Fixes */
 @media (max-width: 991px) {
+  html {
+    scroll-snap-type: none;
+    scroll-padding-top: 6rem;
+  }
+
+  section {
+    scroll-snap-align: none;
+    min-height: auto;
+    padding: 3.5rem 0;
+  }
+
   .metric-card-video-preview {
     width: 220px;
     height: 390px;
