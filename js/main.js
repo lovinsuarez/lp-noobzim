@@ -250,136 +250,21 @@ function initSocialCampaignsSlider() {
 }
 
 /**
- * Duplo Carrossel Infinito e Interativo de Marcas com suporte a arrastar
+ * Carrossel Infinito de Marcas (Acelerado por GPU via CSS)
  */
 function initMarquees() {
-  const marquees = [
-    { id: 'marquee-row-1', speed: 0.5 } // Direita para Esquerda (mais lento e suave)
-  ];
+  const track = document.getElementById('track-1');
+  if (!track) return;
 
-  marquees.forEach(({ id, speed }) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-
-    const track = el.querySelector('.marcas-marquee-track');
-    if (!track) return;
-
-    // Duplicar elementos programaticamente para efeito infinito
+  // Duplicar elementos 1 vez para criar o ciclo contínuo de 50%
+  if (!track.dataset.cloned) {
     const children = Array.from(track.children);
     children.forEach(child => {
       const clone = child.cloneNode(true);
       track.appendChild(clone);
     });
-
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-    let wasInitialized = false;
-
-    // Função de animação contínua (subpixel scroll)
-    function step() {
-      if (!isDown) {
-        const midpoint = track.scrollWidth / 2;
-        if (midpoint > 0) {
-          // Inicialização para rolagem esquerda-para-direita
-          if (speed < 0 && !wasInitialized) {
-            el.scrollLeft = midpoint;
-            wasInitialized = true;
-          }
-
-          let currentScroll = el.scrollLeft + speed;
-
-          // Wrap infinito
-          if (speed > 0) {
-            if (currentScroll >= midpoint) {
-              currentScroll -= midpoint;
-            }
-          } else {
-            if (currentScroll <= 0) {
-              currentScroll += midpoint;
-            }
-          }
-          el.scrollLeft = currentScroll;
-        }
-      }
-      requestAnimationFrame(step);
-    }
-
-    // Drag-to-scroll Mouse
-    el.addEventListener('mousedown', (e) => {
-      isDown = true;
-      el.classList.add('active-dragging');
-      startX = e.pageX - el.offsetLeft;
-      scrollLeft = el.scrollLeft;
-    });
-
-    el.addEventListener('mouseleave', () => {
-      isDown = false;
-      el.classList.remove('active-dragging');
-    });
-
-    el.addEventListener('mouseup', () => {
-      isDown = false;
-      el.classList.remove('active-dragging');
-    });
-
-    el.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - el.offsetLeft;
-      const walk = (x - startX) * 1.5; // sensibilidade do arrasto
-      let currentScroll = scrollLeft - walk;
-
-      const midpoint = track.scrollWidth / 2;
-      if (midpoint > 0) {
-        if (currentScroll >= midpoint) {
-          currentScroll -= midpoint;
-          scrollLeft -= midpoint;
-          startX = x;
-        } else if (currentScroll <= 0) {
-          currentScroll += midpoint;
-          scrollLeft += midpoint;
-          startX = x;
-        }
-      }
-      el.scrollLeft = currentScroll;
-    });
-
-    // Touch para dispositivos móveis
-    el.addEventListener('touchstart', (e) => {
-      isDown = true;
-      startX = e.touches[0].pageX - el.offsetLeft;
-      scrollLeft = el.scrollLeft;
-    });
-
-    el.addEventListener('touchend', () => {
-      isDown = false;
-    });
-
-    el.addEventListener('touchmove', (e) => {
-      if (!isDown) return;
-      const x = e.touches[0].pageX - el.offsetLeft;
-      const walk = (x - startX) * 1.5;
-      let currentScroll = scrollLeft - walk;
-
-      const midpoint = track.scrollWidth / 2;
-      if (midpoint > 0) {
-        if (currentScroll >= midpoint) {
-          currentScroll -= midpoint;
-          scrollLeft -= midpoint;
-          startX = x;
-        } else if (currentScroll <= 0) {
-          currentScroll += midpoint;
-          scrollLeft += midpoint;
-          startX = x;
-        }
-      }
-      el.scrollLeft = currentScroll;
-    });
-
-    // Iniciar loop
-    requestAnimationFrame(step);
-  });
+    track.dataset.cloned = "true";
+  }
 }
 
 /**

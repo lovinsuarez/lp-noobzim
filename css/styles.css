@@ -1539,25 +1539,17 @@ footer>.container {
    ========================================================================== */
 .marcas-marquee-container {
   width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: hidden;
   position: relative;
   padding: 1.5rem 0;
   background-color: var(--dark-bg);
   border-top: 2px solid rgba(241, 170, 0, 0.25);
   border-bottom: 2px solid rgba(241, 170, 0, 0.25);
-  cursor: grab;
   user-select: none;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
 }
 
 .marcas-marquee-container::-webkit-scrollbar {
   display: none;
-}
-
-.marcas-marquee-container.active-dragging {
-  cursor: grabbing;
 }
 
 .marcas-marquee-track {
@@ -1565,6 +1557,20 @@ footer>.container {
   width: max-content;
   gap: 1.5rem;
   will-change: transform;
+  animation: marqueeScroll 40s linear infinite;
+}
+
+.marcas-marquee-container:hover .marcas-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .partner-card-compact {
