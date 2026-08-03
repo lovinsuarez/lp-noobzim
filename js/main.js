@@ -334,43 +334,45 @@ function initMarquees() {
 }
 
 /**
- * Handles contact form submission
+ * Handles contact form submission via Formspree
  */
 function initContactForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
 
-  const whatsappInput = document.getElementById('whatsapp');
-  if (whatsappInput) {
-    whatsappInput.addEventListener('input', (e) => {
-      let value = e.target.value.replace(/\D/g, '');
-      if (value.length > 11) value = value.slice(0, 11);
-      
-      if (value.length === 0) {
-        e.target.value = '';
-      } else if (value.length <= 2) {
-        e.target.value = `(${value}`;
-      } else if (value.length <= 6) {
-        e.target.value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
-      } else if (value.length <= 10) {
-        e.target.value = `(${value.slice(0, 2)}) ${value.slice(2, 6)}-${value.slice(6)}`;
-      } else {
-        e.target.value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7)}`;
-      }
-    });
-  }
+  const submitBtn = document.getElementById('contactSubmitBtn');
+  const successMsg = document.getElementById('formSuccess');
+  const errorMsg = document.getElementById('formError');
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const nome = document.getElementById('nome').value;
-    const whatsapp = document.getElementById('whatsapp').value;
-    const email = document.getElementById('email').value;
 
-    const text = `Olá! Meu nome é ${nome}. Tenho interesse em construir uma parceria!\n\n📌 Meus Contatos:\n• WhatsApp: ${whatsapp}\n• E-mail: ${email}`;
-    const targetUrl = `https://wa.me/5521980150324?text=${encodeURIComponent(text)}`;
+    // Visual: loading state
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'ENVIANDO...';
+    successMsg.classList.remove('is-visible');
+    errorMsg.classList.remove('is-visible');
 
-    window.open(targetUrl, '_blank');
-    form.reset();
+    try {
+      const data = new FormData(form);
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        successMsg.classList.add('is-visible');
+        form.reset();
+      } else {
+        errorMsg.classList.add('is-visible');
+      }
+    } catch {
+      errorMsg.classList.add('is-visible');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'ENVIAR MENSAGEM';
+    }
   });
 }
 

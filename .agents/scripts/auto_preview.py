@@ -34,10 +34,10 @@ def is_running(pid):
     except OSError:
         return False
 
-def get_start_command(root):
+def get_start_command(root, port):
     pkg_file = root / "package.json"
     if not pkg_file.exists():
-        return None
+        return ["python", "-m", "http.server", str(port)]
     
     with open(pkg_file, 'r') as f:
         data = json.load(f)
@@ -47,7 +47,7 @@ def get_start_command(root):
         return ["npm", "run", "dev"]
     elif "start" in scripts:
         return ["npm", "start"]
-    return None
+    return ["python", "-m", "http.server", str(port)]
 
 def start_server(port=3000):
     if PID_FILE.exists():
@@ -60,10 +60,10 @@ def start_server(port=3000):
             pass # Invalid PID file
 
     root = get_project_root()
-    cmd = get_start_command(root)
+    cmd = get_start_command(root, port)
     
     if not cmd:
-        print("❌ No 'dev' or 'start' script found in package.json")
+        print("❌ No 'dev' or 'start' script found in package.json and Python fallback failed")
         sys.exit(1)
     
     # Add port env var if needed (simple heuristic)
