@@ -250,21 +250,87 @@ function initSocialCampaignsSlider() {
 }
 
 /**
- * Carrossel Infinito de Marcas (Acelerado por GPU via CSS)
+ * Carrossel Infinito de Marcas — GPU CSS + Drag/Swipe interativo
+ * Loop seamless: clona os itens 1x. A animação translada -50% (= 1 set completo).
+ * Drag: pausa a animação, aplica offset manual; ao soltar, retoma a partir do ponto correto.
  */
 function initMarquees() {
-  const track = document.getElementById('track-1');
-  if (!track) return;
+  const container = document.getElementById('marquee-row-1');
+  const track     = document.getElementById('track-1');
+  if (!container || !track) return;
 
-  // Duplicar elementos 1 vez para criar o ciclo contínuo de 50%
+  // 1. Clonar itens apenas 1 vez para garantir loop de 50%
   if (!track.dataset.cloned) {
     const children = Array.from(track.children);
-    children.forEach(child => {
-      const clone = child.cloneNode(true);
-      track.appendChild(clone);
-    });
-    track.dataset.cloned = "true";
+    children.forEach(child => track.appendChild(child.cloneNode(true)));
+    track.dataset.cloned = 'true';
   }
+
+  // 2. Drag / Swipe interativo
+  let isDragging  = false;
+  let startX      = 0;
+  let currentX    = 0; // deslocamento acumulado durante o drag
+  let animOffset  = 0; // onde a animação estava quando o drag começou
+
+  /**
+   * Lê a posição X atual que a animação CSS aplicou ao elemento,
+   * mesmo com transform calculado pelo browser.
+   */
+  function getAnimatedTranslateX() {
+    const style  = window.getComputedStyle(track);
+    const matrix = new DOMMatrix(style.transform);
+    return matrix.m41; // translateX em pixels
+  }
+
+  function onDragStart(x) {
+    isDragging = true;
+    startX     = x;
+    animOffset = getAnimatedTranslateX();
+    track.classList.add('is-dragging');
+    track.style.transform = `translateX(${animOffset}px)`;
+  }
+
+  function onDragMove(x) {
+    if (!isDragging) return;
+    const delta  = x - startX;
+    currentX     = animOffset + delta;
+
+    // Seamless wrap: half = metade da largura total do track
+    const half = track.scrollWidth / 2;
+    if (currentX > 0)      currentX -= half;
+    if (currentX < -half)  currentX += half;
+
+    track.style.transform = `translateX(${currentX}px)`;
+  }
+
+  function onDragEnd() {
+    if (!isDragging) return;
+    isDragging = false;
+
+    // Calcula % de progresso para reiniciar a animação no ponto certo
+    const half     = track.scrollWidth / 2;
+    const progress = Math.abs(currentX / half); // 0 → 1
+    const duration = 35; // segundos (igual ao CSS)
+    const elapsed  = progress * duration;
+
+    track.classList.remove('is-dragging');
+    track.style.transform  = '';
+    track.style.animation  = 'none';
+    // Força reflow antes de re-aplicar a animação com delay negativo
+    void track.offsetHeight;
+    track.style.animation  = `marqueeScroll ${duration}s linear -${elapsed}s infinite`;
+  }
+
+  // Mouse
+  container.addEventListener('mousedown',  e => onDragStart(e.clientX));
+  window.addEventListener('mousemove',     e => { if (isDragging) onDragMove(e.clientX); });
+  window.addEventListener('mouseup',       ()  => onDragEnd());
+  container.addEventListener('mouseleave', ()  => { if (isDragging) onDragEnd(); });
+
+  // Touch
+  container.addEventListener('touchstart', e => onDragStart(e.touches[0].clientX), { passive: true });
+  container.addEventListener('touchmove',  e => onDragMove(e.touches[0].clientX),  { passive: true });
+  container.addEventListener('touchend',   ()  => onDragEnd());
 }
 
 /**

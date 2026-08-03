@@ -1546,31 +1546,41 @@ footer>.container {
   border-top: 2px solid rgba(241, 170, 0, 0.25);
   border-bottom: 2px solid rgba(241, 170, 0, 0.25);
   user-select: none;
+  cursor: grab;
+}
+
+.marcas-marquee-container:active {
+  cursor: grabbing;
 }
 
 .marcas-marquee-container::-webkit-scrollbar {
   display: none;
 }
 
+/* A track contém os itens duplicados (original + clone).
+   A animação desloca -50% = 1 volta completa dos itens originais, criando loop seamless */
 .marcas-marquee-track {
   display: flex;
   width: max-content;
   gap: 1.5rem;
   will-change: transform;
-  animation: marqueeScroll 40s linear infinite;
+  animation: marqueeScroll 35s linear infinite;
 }
 
+/* Pausa ao hover no desktop */
 .marcas-marquee-container:hover .marcas-marquee-track {
   animation-play-state: paused;
 }
 
+/* Pausa durante drag */
+.marcas-marquee-track.is-dragging {
+  animation-play-state: paused;
+  transition: none !important;
+}
+
 @keyframes marqueeScroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .partner-card-compact {
@@ -2201,6 +2211,8 @@ footer>.container {
 
   .hero-content {
     padding-right: 0;
+    /* Garante que o título NOOBZIM não fique escondido atrás do header fixo no mobile */
+    padding-top: 4.5rem;
   }
 
   .hero-image-wrapper {
