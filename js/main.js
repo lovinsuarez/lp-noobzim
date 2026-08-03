@@ -472,20 +472,33 @@ function initSmoothScrollSnap() {
 }
 
 /**
- * Handles mobile-only header visibility on scroll.
- * Hides header by default on mobile, shows only when user scrolls down.
+ * Handles mobile-only header visibility on scroll direction:
+ * - Scrolling DOWN (swiping up): hides header
+ * - Scrolling UP (swiping down): reveals header
+ * - At top of page: shows header
  */
 function initMobileScrollHeader() {
   const header = document.querySelector('.site-header');
   if (!header) return;
 
+  let lastScrollY = window.scrollY;
+
   function checkScroll() {
     if (window.innerWidth < 768) {
-      if (window.scrollY > 60) {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY <= 15) {
+        // No topo da página: menu visível
         header.classList.add('mobile-header-show');
-      } else {
+      } else if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        // Rando para BAIXO (dedo desliza pra CIMA): esconde o menu
         header.classList.remove('mobile-header-show');
+      } else if (currentScrollY < lastScrollY) {
+        // Rolando para CIMA (dedo desliza pra BAIXO): exibe o menu
+        header.classList.add('mobile-header-show');
       }
+
+      lastScrollY = currentScrollY;
     } else {
       header.classList.remove('mobile-header-show');
     }
