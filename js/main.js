@@ -375,8 +375,9 @@ function initContactForm() {
 }
 
 /**
- * Intercepts anchor navigation clicks to perform smooth scrolling
- * by temporarily disabling CSS scroll snapping during scroll transitions.
+ * Smooth Scroll com override do Scroll Snap.
+ * Desativa o snap durante o scroll animado e reativa apenas
+ * quando o usuário para completamente (idle de 800ms).
  */
 function initSmoothScrollSnap() {
   const navLinks = document.querySelectorAll('a[href^="#"]');
@@ -390,34 +391,31 @@ function initSmoothScrollSnap() {
 
       e.preventDefault();
 
-      // Temporarily disable scroll-snap on html to allow smooth transition
+      // 1. Suspende o snap instantaneamente para não travar o scrollIntoView
       document.documentElement.style.scrollSnapType = 'none';
 
-      // Scroll smoothly to target element
-      targetSection.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
+      // 2. Scroll suave nativo
+      targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-      // Update URL hash without jumping
+      // 3. Atualiza o hash sem pulo
       history.pushState(null, null, targetId);
 
-      // Re-enable scroll snap after transition is complete
-      let isScrolling;
-      function onScroll() {
-        window.clearTimeout(isScrolling);
-        isScrolling = setTimeout(() => {
+      // 4. Reativa o snap apenas quando o scroll estiver completamente idle (800ms)
+      let idleTimer;
+      const onScroll = () => {
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(() => {
           document.documentElement.style.scrollSnapType = 'y mandatory';
           window.removeEventListener('scroll', onScroll);
-        }, 100);
-      }
-      window.addEventListener('scroll', onScroll);
+        }, 800);
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
 
-      // Fallback in case scroll event doesn't fire (e.g. already at target position)
+      // 5. Fallback: garante reativação mesmo se não houver evento de scroll
       setTimeout(() => {
         document.documentElement.style.scrollSnapType = 'y mandatory';
         window.removeEventListener('scroll', onScroll);
-      }, 1000);
+      }, 1200);
     });
   });
 }
