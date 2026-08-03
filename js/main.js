@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMarquees();
   initContactForm();
   initSmoothScrollSnap();
+  initMobileScrollHeader();
 });
 
 /**
@@ -468,4 +469,29 @@ function initSmoothScrollSnap() {
       }, 1000);
     });
   });
+}
+
+/**
+ * Handles mobile-only header visibility on scroll.
+ * Hides header by default on mobile, shows only when user scrolls down.
+ */
+function initMobileScrollHeader() {
+  const header = document.querySelector('.site-header');
+  if (!header) return;
+
+  function checkScroll() {
+    if (window.innerWidth < 768) {
+      if (window.scrollY > 60) {
+        header.classList.add('mobile-header-show');
+      } else {
+        header.classList.remove('mobile-header-show');
+      }
+    } else {
+      header.classList.remove('mobile-header-show');
+    }
+  }
+
+  window.addEventListener('scroll', checkScroll, { passive: true });
+  window.addEventListener('resize', checkScroll, { passive: true });
+  checkScroll();
 }
