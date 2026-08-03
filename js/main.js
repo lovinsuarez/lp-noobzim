@@ -414,8 +414,10 @@ function initContactForm() {
     const whatsapp = document.getElementById('whatsapp').value;
     const email = document.getElementById('email').value;
 
-    console.log('Formulário Enviado:', { nome, whatsapp, email });
-    alert(`Obrigado pelo contato, ${nome}! Retornaremos em breve.`);
+    const text = `Olá! Meu nome é ${nome}. Tenho interesse em construir uma parceria!\n\n📌 Meus Contatos:\n• WhatsApp: ${whatsapp}\n• E-mail: ${email}`;
+    const targetUrl = `https://wa.me/5521980150324?text=${encodeURIComponent(text)}`;
+
+    window.open(targetUrl, '_blank');
     form.reset();
   });
 }
