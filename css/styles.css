@@ -1034,10 +1034,24 @@ footer>.container {
 
 .fan-metrics {
   display: flex;
+  align-items: center;
   gap: 0.85rem;
   font-size: 0.9rem;
   font-weight: bold;
   color: var(--accent-yellow);
+}
+
+.fan-metrics span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
+}
+
+.fan-metric-icon {
+  width: 15px;
+  height: 15px;
+  object-fit: contain;
 }
 
 .fan-link-text {
@@ -1484,7 +1498,17 @@ footer>.container {
 .tab-icon {
   font-size: 1.8rem;
   line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.tab-icon-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  display: block;
 }
 
 .campaign-tab.active .tab-icon {
@@ -1583,6 +1607,7 @@ footer>.container {
 .campaign-badge {
   display: inline-flex;
   align-items: center;
+  gap: 0.3rem;
   font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.8px;
@@ -1590,6 +1615,12 @@ footer>.container {
   padding: 0.25rem 0.65rem;
   border-radius: 50px;
   margin-bottom: 0.5rem;
+}
+
+.badge-icon-img {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
 }
 
 .gold-badge {
@@ -2164,6 +2195,15 @@ footer>.container {
 
 .v-gender-icon {
   font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.gender-icon-img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  display: inline-block;
 }
 
 .v-gender-val {
@@ -2259,6 +2299,16 @@ footer>.container {
   border-radius: 4px;
   width: 100%;
   color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.footer-chart-icon {
+  width: 15px;
+  height: 15px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 @media (min-width: 992px) {
